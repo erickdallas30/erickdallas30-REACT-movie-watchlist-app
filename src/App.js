@@ -8,7 +8,7 @@ import Watchlist from "./components/Watchlist";
 function App() {
   const [movieList, setMovieList] = useState([]);
   const [watchList, setWatchList] = useState([]);
-  const [page, setPage] = useState([1]);
+  const [page, setPage] = useState(1);
 
   const addMovie = (movie) => setWatchList([...watchList, movie]);
 
@@ -22,7 +22,7 @@ function App() {
   function getData() {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/550?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`
       )
       .then((res) => {
         console.log(res.data.results);
@@ -36,9 +36,10 @@ function App() {
 
   return (
     <div className="App">
-      <header />
+      <Header/>
       <main>
         <MovieScreen
+          addMovie={addMovie}
           movieList={movieList}
           page={page}
           setPage={setPage}

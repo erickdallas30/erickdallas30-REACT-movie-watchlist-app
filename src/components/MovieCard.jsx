@@ -1,7 +1,7 @@
 import React from "react";
 
-function MovieCard({ movie, addMovie, removeMovie, list }) {
-  const inWatchlist = list.filter((mov) => {
+function MovieCard({ movie, addMovie, removeMovie, watchList }) {
+  const inWatchlist = watchList.filter((mov) => {
     return mov.id === movie.id;
   });
 
